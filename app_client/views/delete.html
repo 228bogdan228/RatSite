@@ -1,0 +1,23 @@
+<div class="text-center">
+    <img src="trash.png" class="rounded" alt="...">
+</div>
+
+
+<ng-include src="'views/mainMenu.html'"></ng-include>
+
+<h2> <p align="center"> {{ vm.title }}  </p> </h2>
+
+<form ng-submit="vm.sendForm()" novalidate>
+    <div class="form-row">
+        <div class="col-12" ng-hide="vm.error.length">
+           <h3>   <p align="center"> Действительно удалить "{{vm.formModel.name.value}}"?</p> </h3>
+        </div>
+    </div>
+    <br>
+    <p align="center">   <a class="btn btn-dark" href="/#!/list">Отмена</a> </p>
+    <p align="center">  <button ng-hide="vm.error.length" class="btn btn-dark type="submit">Удалить</button> </p>
+</form>
+
+<div ng-show="vm.error.length" class="alert alert-danger" role="alert">
+    {{vm.error}}
+</div>

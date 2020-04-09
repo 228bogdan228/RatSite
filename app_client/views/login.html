@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col"></br></br></br></div>
+    </div>
+    <div class="form-row justify-content-center">
+
+        <p class="text-center">
+        <div class="col-6 p-3 my-3 border">
+        </p>
+<h2><p class="text-center">Вход</p></h2>
+<br>
+<form ng-class="(vm.formWasValidated) ? 'was-validated': ''" class="needs-validation" ng-submit="vm.sendForm()"
+      novalidate>
+    <div class="form-row justify-content-center">
+        <div class="col-3">
+            <p class="text-center"><label for="login">Логин</label></p>
+            <input ng-class="(vm.formModel.login.valid) ? '': 'is-invalid'" ng-model="vm.formModel.login.value"
+                   type="text" class="form-control" id="login" ng-keyup="vm.validate()">
+            <div ng-class="(vm.formModel.login.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.login.infoText}}
+            </div>
+        </div>
+        <div class="w-100"><br></div>
+        <br>
+        <div class="col-3">
+            <p class="text-center"><label for="password">Пароль</label></p>
+            <input ng-class="(vm.formModel.password.valid) ? '': 'is-invalid'"
+                   ng-model="vm.formModel.password.value"
+                   type="password" class="form-control" id="password" ng-keyup="vm.validate()">
+            <div ng-class="(vm.formModel.password.valid && vm.formWasValidated) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.password.infoText}}
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br/>
+    <p class="text-center">
+        <button ng-disabled="!vm.formWasValidated" class="btn btn-light" type="submit">Войти</button>
+        <a class="btn btn-dark" href="/#!/signup">Регистрация</a>
+    </p>
+</form>
+
+<div ng-show="vm.error.length" class="alert alert-danger" role="alert">
+    {{vm.error}}
+</div>
+
+</div>
+

@@ -1,0 +1,84 @@
+<div class="text-center">
+    <img src="pen.png" class="rounded" alt="...">
+</div>
+
+
+
+<ng-include src="'views/mainMenu.html'"></ng-include>
+<h2><p align="center"> {{ vm.title }} </p> </h2>
+
+<form ng-class="(vm.formWasValidated) ? 'was-validated': ''" class="needs-validation" ng-submit="vm.sendForm()" novalidate>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="name">Название</label>
+            <input ng-class="(vm.formModel.name.valid) ? 'is-valid': 'is-invalid'"  ng-model="vm.formModel.name.value"
+                   type="text" class="form-control" id="name" ng-keyup="vm.validate()">
+            <div ng-class="(vm.formModel.name.valid) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.name.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="city">Город</label>
+            <input ng-class="(vm.formModel.city.valid) ? 'is-valid': 'is-invalid'" ng-model="vm.formModel.city.value"
+                   type="text" class="form-control" id="city" ng-keyup="vm.validate()">
+            <div ng-class="(vm.formModel.city.valid ) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.city.infoText}}
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="student">Студентов</label>
+            <input ng-class="(vm.formModel.student.valid) ? 'is-valid': 'is-invalid'" ng-model="vm.formModel.student.value"
+                   ng-keyup="vm.validate()" type="text" class="form-control" id="student">
+            <div ng-class="(vm.formModel.student.valid ) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.student.infoText}}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-3 mb-4">
+            <label for="ballrate">Рейтинг</label>
+            <input ng-class="(vm.formModel.ballrate.valid) ? 'is-valid': 'is-invalid'" ng-model="vm.formModel.ballrate.value"
+                   ng-keyup="vm.validate()" type="text" class="form-control" id="ballrate">
+            <div ng-class="(vm.formModel.ballrate.valid ) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.ballrate.infoText}}
+            </div>
+        </div>
+
+
+        <div class="col-md-5 mb-4">
+
+            <label for="name">Форма обучения</label>
+            <select id="formobuch" ng-model="vm.formModel.formobuch.value"
+                    ng-class="(vm.formModel.formobuch.valid) ? 'is-valid': 'is-invalid'"
+                    ng-change="vm.validate()" type="text" class="form-control" id="formobuch" value="formobuch">
+                <option value = ''>Откройте это меню чтобы выбрать</option>
+                <option>Очная</option>
+                <option>Заочная</option>
+                <option>Очно-заочная</option>
+            </select>
+            <div ng-class="(vm.formModel.formobuch.valid ) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.formobuch.infoText}}
+            </div>
+        </div>
+
+        <div class="col-md-2 mb-4">
+            <label for="date-start">Дата получения аккредитации</label>
+            <input ng-change="vm.validate()" ng-model="vm.formModel.dateStart.value" type="date" class="form-control"
+                   ng-class="(vm.formModel.dateFinish.valid) ? 'is-valid': 'is-invalid'" id="date-start" ng-change="vm.validate()">
+        </div>
+        <div class="col-md-2 mb-4">
+            <label for="date-finish">Дата завершения аккредитации</label>
+            <input ng-change="vm.validate()" ng-model="vm.formModel.dateFinish.value" type="date" class="form-control"
+                   ng-class="(vm.formModel.dateFinish.valid) ? 'is-valid': 'is-invalid'" id="date-finish">
+            <div ng-class="(vm.formModel.dateFinish.valid) ? 'valid-feedback': 'invalid-feedback'">
+                {{vm.formModel.dateFinish.infoText}}
+            </div>
+        </div>
+    </div>
+    <br>
+    <p align="center"> <button ng-disabled="!vm.formWasValidated" class="btn btn-dark" type="submit">Добавить</button> </p>
+</form>
+
+<div ng-show="vm.error.length" class="alert alert-danger" role="alert">
+    {{vm.error}}
+</div>
